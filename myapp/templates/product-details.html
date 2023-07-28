@@ -1,0 +1,109 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+  </head>
+  <body class="goto-here">
+		
+    <!-- END nav -->
+
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg' %} );">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Details</span></p>
+            <h1 class="mb-0 bread">Product Details</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-lg-6 mb-5 ftco-animate">
+    				<a href="{{fruitage.fruitage_pic.url}}" class="image-popup"><img src="{{fruitage.fruitage_pic.url}}" class="img-fluid" alt="Colorlib Template"></a>
+    			</div>
+    			<div class="col-lg-6 product-details pl-md-5 ftco-animate">
+    				<h3>{{fruitage.fruitage_name}}</h3>
+    				<div class="rating d-flex">
+						
+						
+						</div>
+    				<p class="price"><span>Type: {{fruitage.fruitage_type}}</span></p>
+    				<p class="price"><span>Category: {{fruitage.fruitage_category}}</span></p>
+    				<p class="price"><span>Weight: {{fruitage.fruitage_weight}}</span></p>
+    				<p class="price"><span>Price: {{fruitage.fruitage_price}}</span></p>
+    				
+						<div class="row mt-4">
+							
+          	
+			  {% if cart_flag == True %}
+          	<p>
+				<a href="{% url 'remove-from-cart' pk=fruitage.pk %}" class="btn btn-danger py-3 px-5"> Remove From Cart </a>
+			</p>
+			{% else %}
+			<p>
+				<a href="{% url 'add-to-cart' pk=fruitage.pk %}" class="btn btn-black py-3 px-5"> Add To Cart </a>
+			</p>
+			{% endif %}
+            
+			{% if wishlist_flag == True %}
+          	<p>
+				<a href="{% url 'remove-from-wishlist' pk=fruitage.pk %}" class="btn btn-danger py-3 px-5"> Remove From Wishlist </a>
+			</p>
+			{% else %}
+			<p>
+				<a href="{% url 'add-to-wishlist' pk=fruitage.pk %}" class="btn btn-black py-3 px-5"> Add To Wishlist </a>
+			</p>
+			{% endif %}
+    			</div>
+    		</div>
+    	</div>
+    </section>
+
+
+
+  <script>
+		$(document).ready(function(){
+
+		var quantitiy=0;
+		   $('.quantity-right-plus').click(function(e){
+		        
+		        // Stop acting like a button
+		        e.preventDefault();
+		        // Get the field name
+		        var quantity = parseInt($('#quantity').val());
+		        
+		        // If is not undefined
+		            
+		            $('#quantity').val(quantity + 1);
+
+		          
+		            // Increment
+		        
+		    });
+
+		     $('.quantity-left-minus').click(function(e){
+		        // Stop acting like a button
+		        e.preventDefault();
+		        // Get the field name
+		        var quantity = parseInt($('#quantity').val());
+		        
+		        // If is not undefined
+		      
+		            // Increment
+		            if(quantity>0){
+		            $('#quantity').val(quantity - 1);
+		            }
+		    });
+		    
+		});
+	</script>
+    
+  </body>
+</html>
+{% endblock %}

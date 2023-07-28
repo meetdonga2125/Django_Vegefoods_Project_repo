@@ -1,0 +1,104 @@
+{% extends 'seller-header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .msginfo{
+   position: absolute;
+   top: -61px;
+   left: 780px;
+   color: blue
+}
+ </style>
+  </head>
+  <body class="goto-here">
+		
+    <!-- END nav -->
+
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Add Product</span></p>
+            <h1 class="mb-0 bread">Add Product</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section contact-section bg-light">
+      <div class="container">
+      
+        </div>
+        <div class="row block-12">
+          <div class="col-md-12 order-md-last d-flex">
+            {% if msg %}
+            <b style="color: 'blue'" class="msginfo">{{msg}}</b>
+            {% endif %}
+            <form action="{% url 'seller-add-product' %}" class="bg-white p-5 contact-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <select name="fruitage_type" class="form-control">
+                      <option> ---Select Type--- </option>
+                      <option value="vegetables">Vegetables</option>
+                      <option value="fruits">fruits</option>
+                     
+                    </select>
+                </div>
+              <div class="form-group">
+                  <select name="fruitage_category" class="form-control">
+                    <option> ---Select Category--- </option>
+                    <option value="leafy-green">leafy-green</option>
+                    <option value="cruciferous">cruciferous</option>
+                    <option value="root">root</option>
+                    <option value="pome">pome</option>
+                    <option value="berries">berries</option>
+                  </select>
+              </div>
+         
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter Your Fruitage Name" name="fruitage_name">
+              </div>
+
+              <div class="form-group">
+                <select name="fruitage_weight" class="form-control">
+                  <option> ---Select Weight--- </option>
+                  <option value="500gm">500gm</option>
+                  <option value="1kg">1kg</option>
+                  <option value="2kg">2kg</option>
+                  <option value="3kg">3kg</option>
+                  <option value="4kg">4kg</option>
+                  <option value="5kg">5kg</option>
+                </select>
+            </div>
+           
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder=" Enter Your Fruitage Price" name="fruitage_price">
+              </div>
+
+              <div class="form-group">
+                Fruitage_Pic : 
+                <input type="file" class="form-control"  name="fruitage_pic">
+              </div>
+            
+             
+              <div class="form-group">
+                <input type="submit" value="Add Product" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+          
+          </div>
+
+         
+        </div>
+      </div>
+    </section>
+
+
+    
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+ <title>Thanks for your order!</title>
+ <style>
+    .para{
+        width: 100vw;
+        height:20vh;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+ </style>
+ 
+</head>
+<body>
+ <div class="container">
+ <p class="para">
+ <h3 style="color:green; font-weight: bold;">Payment Successful</h3>
+ <p style="font-weight: bold; color: black">Thank you for your purchase!</p>
+ <p  style="font-weight: bold; color: black"> If you have any questions, please let us know through emails.</p>
+ </p>
+ </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,190 @@
+{% extends 'seller-header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .msginfo{
+   position: absolute;
+   top: -61px;
+   left: 780px;
+   color: blue
+}
+ </style>
+  </head>
+  <body class="goto-here">
+		
+    <!-- END nav -->
+
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Edit Product</span></p>
+            <h1 class="mb-0 bread">Edit Product</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section contact-section bg-light">
+      <div class="container">
+      
+        </div>
+        <div class="row block-12">
+          <div class="col-md-12 order-md-last d-flex">
+            {% if msg %}
+            <b style="color: 'blue'" class="msginfo">{{msg}}</b>
+            {% endif %}
+            <form action="{% url 'seller-product-edit' pk=fruitage.pk %}" class="bg-white p-5 contact-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <select name="fruitage_type" class="form-control">
+                        {% if fruitage.fruitage_type == 'vegetables' %}
+                          <option> ---Select Type--- </option>
+                          <option value="vegetables" selected>vegetables</option>
+                          <option value="fruits">fruits</option>
+                        {% elif fruitage.fruitage_type == 'fruits' %}
+                          <option> ---Select Type--- </option>
+                          <option value="vegetables">vegetables</option>
+                          <option value="fruits" selected>fruits</option>
+                       {% endif %}
+                    
+                     
+                    </select>
+                </div>
+              <div class="form-group">
+                  <select name="fruitage_category" class="form-control">
+                    {% if fruitage.fruitage_category == 'leafy-green'%}
+                      <option> ---Select Category--- </option>
+                      <option value="leafy-green" selected>leafy-green</option>
+                      <option value="cruciferous">cruciferous</option>
+                      <option value="root">root</option>
+                      <option value="pome">pome</option>
+                      <option value="berries">berries</option>
+                    {% elif fruitage.fruitage_category == 'cruciferous'%}
+                      <option> ---Select Category--- </option>
+                      <option value="leafy-green">leafy-green</option>
+                      <option value="cruciferous" selected>cruciferous</option>
+                      <option value="root">root</option>
+                      <option value="pome">pome</option>
+                      <option value="berries">berries</option>
+                    {% elif fruitage.fruitage_category == 'root'%}
+                      <option> ---Select Category--- </option>
+                      <option value="leafy-green">leafy-green</option>
+                      <option value="cruciferous">cruciferous</option>
+                      <option value="root" selected>root</option>
+                      <option value="pome">pome</option>
+                      <option value="berries">berries</option>
+                    {% elif fruitage.fruitage_category == 'pome'%}
+                      <option> ---Select Category--- </option>
+                      <option value="leafy-green">leafy-green</option>
+                      <option value="cruciferous">cruciferous</option>
+                      <option value="root">root</option>
+                      <option value="pome" selected>pome</option>
+                      <option value="berries">berries</option>
+                    {% elif fruitage.fruitage_category == 'berries'%}
+                      <option> ---Select Category--- </option>
+                      <option value="leafy-green">leafy-green</option>
+                      <option value="cruciferous">cruciferous</option>
+                      <option value="root">root</option>
+                      <option value="pome">pome</option>
+                      <option value="berries" selected>berries</option>
+                    {% endif %}
+                  
+                  </select>
+              </div>
+         
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter Your Fruitage Name" name="fruitage_name" value="{{fruitage.fruitage_name}}">
+              </div>
+
+              <div class="form-group">
+                <select name="fruitage_weight" class="form-control">
+                    {% if fruitage.fruitage_weight == '500gm' %}
+                      <option> ---Select Weight--- </option>
+                      <option value="500gm" selected>500gm</option>
+                      <option value="1kg">1kg</option>
+                      <option value="2kg">2kg</option>
+                      <option value="3kg">3kg</option>
+                      <option value="4kg">4kg</option>
+                      <option value="5kg">5kg</option>
+                    {% elif fruitage.fruitage_weight == '1kg' %}
+                      <option> ---Select Weight--- </option>
+                      <option value="500gm">500gm</option>
+                      <option value="1kg" selected>1kg</option>
+                      <option value="2kg">2kg</option>
+                      <option value="3kg">3kg</option>
+                      <option value="4kg">4kg</option>
+                      <option value="5kg">5kg</option>
+                    {% elif fruitage.fruitage_weight == '2kg' %}
+                      <option> ---Select Weight--- </option>
+                      <option value="500gm">500gm</option>
+                      <option value="1kg">1kg</option>
+                      <option value="2kg" selected>2kg</option>
+                      <option value="3kg">3kg</option>
+                      <option value="4kg">4kg</option>
+                      <option value="5kg">5kg</option>
+                    {% elif fruitage.fruitage_weight == '3kg' %}
+                      <option> ---Select Weight--- </option>
+                      <option value="500gm">500gm</option>
+                      <option value="1kg">1kg</option>
+                      <option value="2kg">2kg</option>
+                      <option value="3kg" selected>3kg</option>
+                      <option value="4kg">4kg</option>
+                      <option value="5kg">5kg</option>
+                    {% elif fruitage.fruitage_weight == '4kg' %}
+                      <option> ---Select Weight--- </option>
+                      <option value="500gm">500gm</option>
+                      <option value="1kg">1kg</option>
+                      <option value="2kg">2kg</option>
+                      <option value="3kg">3kg</option>
+                      <option value="4kg" selected>4kg</option>
+                      <option value="5kg">5kg</option>
+                    {% elif fruitage.fruitage_weight == '5kg' %}
+                      <option> ---Select Weight--- </option>
+                      <option value="500gm">500gm</option>
+                      <option value="1kg">1kg</option>
+                      <option value="2kg">2kg</option>
+                      <option value="3kg">3kg</option>
+                      <option value="4kg">4kg</option>
+                      <option value="5kg" selected>5kg</option>
+
+                   {% endif %}
+                </select>
+            </div>
+           
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder=" Enter Your Fruitage Price" name='fruitage_price' value="{{fruitage.fruitage_price}}">
+              </div>
+
+              <div class="form-group">
+                
+                <img src="{{fruitage.fruitage_pic.url}}" style="width:100px; height:100px">  >
+              </div>
+
+              <div class="form-group">
+                Fruitage_Pic : 
+                <input type="file" class="form-control"  value="fruitage_pic">
+              </div>
+            
+             
+              <div class="form-group">
+                <input type="submit" value="Update Product" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+          
+          </div>
+
+         
+        </div>
+      </div>
+    </section>
+
+
+    
+  </body>
+</html>
+{% endblock %}
