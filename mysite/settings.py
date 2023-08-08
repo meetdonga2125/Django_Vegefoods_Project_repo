@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -144,3 +145,9 @@ MEDIA_URL = '/media/'
 
 STRIPE_PUBLIC_KEY='pk_test_51NYQwYSDiDmZU1d7WPZsvmbz1OfwQwGscukZpaEp3d2z201cVkat6TmwS4oYEWkW910p9T38UAvjH545GFQNEIl500313yfiWq'
 STRIPE_PRIVATE_KEY='sk_test_51NYQwYSDiDmZU1d7WzGA5MmjU4n34Oz9Cu8ZMLW52DbunUIjacxxC8xMmzKaMFBrCdHHHHzOfrh9YGQKE2B99S8w009zixhFgK'
+
+
+SESSION_EXPIRE_SECONDS = 60  # 1 Minute
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY_GRACE_PERIOD = 1 # group by minute
+SESSION_TIMEOUT_REDIRECT = '/'

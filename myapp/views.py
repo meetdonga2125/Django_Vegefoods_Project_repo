@@ -85,6 +85,11 @@ def seller_order(request):
 def index(request):
     return render(request, 'index.html')
 
+
+def seller_index(request):
+    return render(request, 'seller-index.html')
+
+
 def signup(request):
     if request.method=='POST':
         try:
